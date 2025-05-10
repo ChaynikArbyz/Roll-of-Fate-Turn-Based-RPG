@@ -4,16 +4,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JsonServise;
 using PlayerClass;
 
 namespace Roll_of_Fate_Turn_Based_RPG
 {
     public partial class Form1 : Form
     {
-        Player player;
+        SaveLoadService SLService = new SaveLoadService();
         public Form1()
         {
             InitializeComponent();
@@ -29,9 +31,16 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void realCreateButton_Click(object sender, EventArgs e)
         {
-            player = new Player();
+            Player player = new Player();
             player.Name = nameBox.Text;
             MainForm form = new MainForm(player);
+            this.Hide();
+            form.Show();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            MainForm form = new MainForm(SLService.Load());
             this.Hide();
             form.Show();
         }

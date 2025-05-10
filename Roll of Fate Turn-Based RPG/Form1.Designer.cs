@@ -41,13 +41,13 @@
             this.createButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGoldenrod;
             this.createButton.FlatAppearance.BorderSize = 3;
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createButton.Font = new System.Drawing.Font("Impact", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.createButton.Font = new System.Drawing.Font("Impact", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.createButton.ForeColor = System.Drawing.Color.Black;
             this.createButton.Location = new System.Drawing.Point(440, 550);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(400, 100);
             this.createButton.TabIndex = 1;
-            this.createButton.Text = "Create Character";
+            this.createButton.Text = "Создать персонажа";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
@@ -56,14 +56,15 @@
             this.loadButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGoldenrod;
             this.loadButton.FlatAppearance.BorderSize = 3;
             this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadButton.Font = new System.Drawing.Font("Impact", 46F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.loadButton.Font = new System.Drawing.Font("Impact", 31F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.loadButton.ForeColor = System.Drawing.Color.Black;
             this.loadButton.Location = new System.Drawing.Point(465, 656);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(350, 75);
             this.loadButton.TabIndex = 2;
-            this.loadButton.Text = "Load Character";
+            this.loadButton.Text = "Загрузить персонажа";
             this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // nameBox
             // 
@@ -78,12 +79,12 @@
             // enterNameLabel
             // 
             this.enterNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.enterNameLabel.Font = new System.Drawing.Font("Impact", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.enterNameLabel.Font = new System.Drawing.Font("Impact", 29F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.enterNameLabel.Location = new System.Drawing.Point(465, 502);
             this.enterNameLabel.Name = "enterNameLabel";
             this.enterNameLabel.Size = new System.Drawing.Size(350, 75);
             this.enterNameLabel.TabIndex = 4;
-            this.enterNameLabel.Text = "Enter character name";
+            this.enterNameLabel.Text = "Введите имя персонажа";
             this.enterNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.enterNameLabel.Visible = false;
             // 
@@ -99,7 +100,7 @@
             this.realCreateButton.Name = "realCreateButton";
             this.realCreateButton.Size = new System.Drawing.Size(180, 40);
             this.realCreateButton.TabIndex = 5;
-            this.realCreateButton.Text = "Create";
+            this.realCreateButton.Text = "Создать";
             this.realCreateButton.UseVisualStyleBackColor = false;
             this.realCreateButton.Visible = false;
             this.realCreateButton.Click += new System.EventHandler(this.realCreateButton_Click);

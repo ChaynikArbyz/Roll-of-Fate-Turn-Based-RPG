@@ -8,7 +8,7 @@ namespace ArmorClass
 {
     public class Armor
     {
-        string Name = "";
+        public string Name = "";
         int Price = 0;
         int DefenseBonus = 0;
 

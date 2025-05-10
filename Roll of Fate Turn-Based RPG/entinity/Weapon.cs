@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using EnemyClass;
+using PlayerClass;
 
 namespace WeaponClass
 {
     public class Weapon
     {
-        string Name = "";
+        public string Name = "";
         int Price = 0;
         int AttackBonus = 0;
 
         public int GetAttackBonus()
         { return this.AttackBonus; }
+        public virtual void UseAbility(Player player, Enemy enemy)
+        { }
     }
 }
