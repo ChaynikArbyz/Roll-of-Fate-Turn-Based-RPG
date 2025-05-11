@@ -44,5 +44,10 @@ namespace Roll_of_Fate_Turn_Based_RPG
             this.Hide();
             form.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

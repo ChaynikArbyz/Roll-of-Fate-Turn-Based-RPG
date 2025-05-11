@@ -12,7 +12,8 @@ namespace WeaponClass
     public class Weapon
     {
         public string Name = "";
-        int Price = 0;
+        public string AbilityDescription = "";
+        public int Price = 0;
         int AttackBonus = 0;
 
         public int GetAttackBonus()

@@ -49,6 +49,10 @@
             this.WeaponLabel = new System.Windows.Forms.Label();
             this.ArmorLabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.RollButton = new System.Windows.Forms.Button();
+            this.SucessLabel = new System.Windows.Forms.Label();
+            this.HealPotionsLabel = new System.Windows.Forms.Button();
+            this.ManaPotionsLabel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -248,10 +252,10 @@
             this.GoldLabel.BackColor = System.Drawing.Color.Transparent;
             this.GoldLabel.Font = new System.Drawing.Font("Impact", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.GoldLabel.ForeColor = System.Drawing.Color.Gold;
-            this.GoldLabel.Location = new System.Drawing.Point(208, 810);
+            this.GoldLabel.Location = new System.Drawing.Point(308, 810);
             this.GoldLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.GoldLabel.Name = "GoldLabel";
-            this.GoldLabel.Size = new System.Drawing.Size(600, 60);
+            this.GoldLabel.Size = new System.Drawing.Size(400, 60);
             this.GoldLabel.TabIndex = 16;
             this.GoldLabel.Text = "Золото: 2000";
             this.GoldLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -259,28 +263,28 @@
             // WeaponLabel
             // 
             this.WeaponLabel.BackColor = System.Drawing.Color.Transparent;
-            this.WeaponLabel.Font = new System.Drawing.Font("Impact", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.WeaponLabel.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.WeaponLabel.ForeColor = System.Drawing.Color.White;
             this.WeaponLabel.Location = new System.Drawing.Point(31, 50);
             this.WeaponLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WeaponLabel.Name = "WeaponLabel";
-            this.WeaponLabel.Size = new System.Drawing.Size(300, 60);
+            this.WeaponLabel.Size = new System.Drawing.Size(300, 101);
             this.WeaponLabel.TabIndex = 17;
-            this.WeaponLabel.Text = "Оружие: Ножи Вампира";
-            this.WeaponLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.WeaponLabel.Text = "Оружие: Ножи Вампира\r\nБонус к урону: 1\r\nСпособность: Востанавливает 25% здоровья " +
+    "от урона вашей следующей атаки";
             // 
             // ArmorLabel
             // 
             this.ArmorLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ArmorLabel.Font = new System.Drawing.Font("Impact", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.ArmorLabel.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ArmorLabel.ForeColor = System.Drawing.Color.White;
             this.ArmorLabel.Location = new System.Drawing.Point(697, 50);
             this.ArmorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ArmorLabel.Name = "ArmorLabel";
-            this.ArmorLabel.Size = new System.Drawing.Size(300, 60);
+            this.ArmorLabel.Size = new System.Drawing.Size(300, 101);
             this.ArmorLabel.TabIndex = 18;
-            this.ArmorLabel.Text = "Броня: Картонная коробка";
-            this.ArmorLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ArmorLabel.Text = "Броня: Картонная коробка\r\nБонус к защите: 100";
+            this.ArmorLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // SaveButton
             // 
@@ -299,6 +303,71 @@
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // RollButton
+            // 
+            this.RollButton.BackColor = System.Drawing.Color.Transparent;
+            this.RollButton.BackgroundImage = global::Roll_of_Fate_Turn_Based_RPG.Properties.Resources.Dice;
+            this.RollButton.FlatAppearance.BorderSize = 0;
+            this.RollButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.RollButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.RollButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RollButton.Location = new System.Drawing.Point(1094, 220);
+            this.RollButton.Name = "RollButton";
+            this.RollButton.Size = new System.Drawing.Size(506, 600);
+            this.RollButton.TabIndex = 20;
+            this.RollButton.UseVisualStyleBackColor = false;
+            this.RollButton.Click += new System.EventHandler(this.RollButton_Click);
+            // 
+            // SucessLabel
+            // 
+            this.SucessLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SucessLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SucessLabel.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.SucessLabel.ForeColor = System.Drawing.Color.LimeGreen;
+            this.SucessLabel.Location = new System.Drawing.Point(1317, 108);
+            this.SucessLabel.Name = "SucessLabel";
+            this.SucessLabel.Size = new System.Drawing.Size(302, 43);
+            this.SucessLabel.TabIndex = 21;
+            this.SucessLabel.Text = "Успешно!";
+            this.SucessLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.SucessLabel.Visible = false;
+            // 
+            // HealPotionsLabel
+            // 
+            this.HealPotionsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.HealPotionsLabel.FlatAppearance.BorderSize = 0;
+            this.HealPotionsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.HealPotionsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.HealPotionsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HealPotionsLabel.Font = new System.Drawing.Font("Impact", 27F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.HealPotionsLabel.ForeColor = System.Drawing.Color.White;
+            this.HealPotionsLabel.Location = new System.Drawing.Point(50, 810);
+            this.HealPotionsLabel.Name = "HealPotionsLabel";
+            this.HealPotionsLabel.Size = new System.Drawing.Size(281, 60);
+            this.HealPotionsLabel.TabIndex = 24;
+            this.HealPotionsLabel.Text = "Использовать";
+            this.HealPotionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HealPotionsLabel.UseVisualStyleBackColor = false;
+            this.HealPotionsLabel.Click += new System.EventHandler(this.UseHealthPotionButton_Click);
+            // 
+            // ManaPotionsLabel
+            // 
+            this.ManaPotionsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ManaPotionsLabel.FlatAppearance.BorderSize = 0;
+            this.ManaPotionsLabel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ManaPotionsLabel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.ManaPotionsLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ManaPotionsLabel.Font = new System.Drawing.Font("Impact", 27F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.ManaPotionsLabel.ForeColor = System.Drawing.Color.White;
+            this.ManaPotionsLabel.Location = new System.Drawing.Point(713, 810);
+            this.ManaPotionsLabel.Name = "ManaPotionsLabel";
+            this.ManaPotionsLabel.Size = new System.Drawing.Size(281, 60);
+            this.ManaPotionsLabel.TabIndex = 25;
+            this.ManaPotionsLabel.Text = "Использовать";
+            this.ManaPotionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ManaPotionsLabel.UseVisualStyleBackColor = false;
+            this.ManaPotionsLabel.Click += new System.EventHandler(this.UseManaPotionButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -307,6 +376,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1662, 929);
+            this.Controls.Add(this.ManaPotionsLabel);
+            this.Controls.Add(this.HealPotionsLabel);
+            this.Controls.Add(this.SucessLabel);
+            this.Controls.Add(this.RollButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ArmorLabel);
             this.Controls.Add(this.WeaponLabel);
@@ -330,10 +403,12 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Impact", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Roll Of Fate: Turn-Based RPG";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
 
@@ -361,5 +436,10 @@
         private System.Windows.Forms.Label WeaponLabel;
         private System.Windows.Forms.Label ArmorLabel;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button RollButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label SucessLabel;
+        private System.Windows.Forms.Button HealPotionsLabel;
+        private System.Windows.Forms.Button ManaPotionsLabel;
     }
 }

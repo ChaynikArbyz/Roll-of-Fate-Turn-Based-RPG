@@ -40,12 +40,15 @@ namespace PlayerClass
         public Weapon Weapon = new Weapon();
         public Armor Armor = new Armor();
 
+        public int HealPotion = 0;
+        public int ManaPotion = 0;
 
         public Player()
         {
             this.Health = this.MaxHealth;
             this.Mana = this.MaxMana;
             this.CriticalChance = this.Agility;
+            this.AvoidChance = this.Endurance;
         }
 
         public double CalculateCriticalChance()
@@ -58,12 +61,16 @@ namespace PlayerClass
             return this.AvoidChance;
         }
 
+        public void AddAgility(int toAdd) { Agility = Math.Max(0,Agility + toAdd); CalculateCriticalChance(); }
+        public void AddEndurance(int toAdd) { Endurance = Math.Max(0, Endurance + toAdd); CalculateAvoidChance(); }
+        public void AddStrength(int toAdd) { Strength = Math.Max(0, Strength + toAdd); MaxHealth = 100 + Strength * 25; }
+        public void AddIntelligence(int toAdd) { Intelligence = Math.Max(0, Intelligence + toAdd); MaxMana = 50 + Intelligence * 10; }
 
-        public int CalculateAttackPower()
-        { return this.Strength * 5 + Weapon.GetAttackBonus(); }
+        public int CalculateAttackPower() { return this.Strength * 5 + Weapon.GetAttackBonus(); }
 
-        public int CalculateDefense()
-        { return this.Strength * 3 + Armor.GetDefenseBonus(); }
+        public int CalculateDefense() { return this.Strength * 3 + Armor.GetDefenseBonus(); }
+
+
 
         public int DealingDamage()
         {
@@ -105,7 +112,7 @@ namespace PlayerClass
             Mana = MaxMana;
         }
 
-        public void GetExp(int exp)
+        public void IncreaseExp(int exp)
         {
             Experience += exp;
             if (Experience >= LevelCup)
@@ -115,8 +122,8 @@ namespace PlayerClass
             }
         }
 
-        public void GetMoney(int money) => Gold += money;
-        public bool DecreaseMoney(int cost) 
+        public void IncreaseMoney(int money) => Gold += money;
+        public bool BuyWithMoney(int cost) 
         {
             if (Gold >= cost)
             {
@@ -124,9 +131,41 @@ namespace PlayerClass
                 return true;
             }
             else
-            { 
+            {
+                MessageBox.Show("Недостаточно денег!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false; 
             }
+        }
+
+
+        public void DecreaseHealth(int toDecrease)
+        {
+            if (Health - toDecrease <= 0)
+            { MessageBox.Show("Ви умерли!"); Application.Exit(); }
+            else { Health -= toDecrease; }
+        }
+        public void Heal(int toHeal) => Health = Math.Min(MaxHealth, Health + toHeal);
+        public void HealMana(int toHeal) => Mana = Math.Min(MaxMana, Mana + toHeal);
+
+        public void UseHealPotion() 
+        {
+            if (HealPotion > 0)
+            {
+                HealPotion--;
+                Heal(MaxHealth / 2);
+                MessageBox.Show("Зелье использовано\n+50% здоровья", "Sucess", MessageBoxButtons.OK);
+            }
+            else { MessageBox.Show("Недостаточно Зелий!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+        }
+        public void UseManaPotion()
+        {
+            if (ManaPotion > 0)
+            {
+                ManaPotion--;
+                HealMana(MaxMana / 2);
+                MessageBox.Show("Зелье использовано\n+50% маны", "Sucess", MessageBoxButtons.OK);
+            }
+            else { MessageBox.Show("Недостаточно Зелий!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
     }

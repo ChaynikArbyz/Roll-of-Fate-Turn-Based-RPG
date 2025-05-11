@@ -55,8 +55,8 @@ namespace EnemyClass
             else 
                 {
                 Health = 0;
-                player.GetMoney(RewardGold);
-                player.GetExp(RewardXp);
+                player.IncreaseMoney(RewardGold);
+                player.IncreaseExp(RewardXp);
                 }
         }
 
