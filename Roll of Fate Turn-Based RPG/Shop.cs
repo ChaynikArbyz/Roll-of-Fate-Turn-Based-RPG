@@ -11,6 +11,7 @@ using ItemsGeneratorNameSpace;
 using PlayerClass;
 using WeaponClass;
 using ArmorClass;
+using MSPlayer;
 
 namespace Roll_of_Fate_Turn_Based_RPG
 {
@@ -53,6 +54,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void Shop_Load(object sender, EventArgs e)
         {
+            MySoundPlayer.PlayShopMusic();
             GenerateItems();
             GeneratePotions();
         }

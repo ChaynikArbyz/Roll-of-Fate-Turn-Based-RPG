@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EnemyClass;
+using MSPlayer;
 using PlayerClass;
 
 namespace Roll_of_Fate_Turn_Based_RPG
@@ -61,7 +62,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void Fight_Load(object sender, EventArgs e)
         {
-
+            MySoundPlayer.PlayBattleMusic();
         }
 
         int HealthToUse = 0;

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ArmorClass;
 using EnemyClass;
 using JsonService;
+using MSPlayer;
 using Roll_of_Fate_Turn_Based_RPG;
 using Roll_of_Fate_Turn_Based_RPG.Properties;
 using WeaponClass;
@@ -153,16 +154,10 @@ namespace PlayerClass
             {
                 Health = 0;
                 saveLoadService.MarkPlayerAsDead();
-                SoundPlayer soundPlayer = new SoundPlayer();
                 Timer timer = new Timer();
-                soundPlayer.Stop();
                 timer.Interval = 3000;
-
                 timer.Tick += (s, e) => { timer.Stop(); timer.Dispose(); Application.Restart(); };
-
-                //soundPlayer.Stream = Resources.deadSound;
-               soundPlayer.SoundLocation = "../../Resources/deadSound.wav";
-                soundPlayer.Play();
+                MySoundPlayer.PlayDeadSound();
                 timer.Start();
             }
             else { Health -= toDecrease; }

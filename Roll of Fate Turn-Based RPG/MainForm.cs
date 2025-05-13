@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JsonService;
+using MSPlayer;
 using PlayerClass;
 using Roll_of_Fate_Turn_Based_RPG.Properties;
 using RollServ;
@@ -141,7 +142,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            MySoundPlayer.PlayMainMusic();
         }
     }
 }

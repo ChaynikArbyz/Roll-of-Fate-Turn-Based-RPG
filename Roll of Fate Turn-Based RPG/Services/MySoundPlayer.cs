@@ -12,13 +12,38 @@ namespace MSPlayer
     {
         static SoundPlayer Splayer = new SoundPlayer();
 
-        static void PlayLoginMusic()
+        public static void PlayDeadSound()
         {
             Splayer.Stop();
-            //Splayer.SoundLocation = Resources.;
+            Splayer.SoundLocation = "../../Resources/deadSound.wav";
+            Splayer.Play();
+        }
+        public static void PlayLoginMusic()
+        {
+            Splayer.Stop();
+            Splayer.SoundLocation = "../../Resources/LoginTheme.wav";
+            Splayer.PlayLooping();
+        }
+        public static void PlayMainMusic()
+        {
+            Splayer.Stop();
+            Splayer.SoundLocation = "../../Resources/MainTheme.wav";
+            Splayer.PlayLooping();
+        }
+        public static void PlayShopMusic()
+        {
+            Splayer.Stop();
+            Splayer.SoundLocation = "../../Resources/ShopTheme.wav";
+            Splayer.PlayLooping();
+        }
+        public static void PlayBattleMusic()
+        {
+            Splayer.Stop();
+            Splayer.SoundLocation = "../../Resources/FightTheme.wav";
+            Splayer.PlayLooping();
         }
 
-        static void StopMusic() => Splayer.Stop();
+        public static void StopMusic() => Splayer.Stop();
 
     }
 }

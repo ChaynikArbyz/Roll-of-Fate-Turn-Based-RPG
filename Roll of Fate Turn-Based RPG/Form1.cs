@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JsonService;
+using MSPlayer;
 using PlayerClass;
 
 namespace Roll_of_Fate_Turn_Based_RPG
@@ -60,6 +61,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MySoundPlayer.PlayLoginMusic();
             existsSave();
             if (player.died)
             {
