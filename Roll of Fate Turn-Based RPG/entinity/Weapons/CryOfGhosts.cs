@@ -18,12 +18,17 @@ namespace CryOfGhostsW
         public override int AttackBonus { get; set; } = 13;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(150);
-            int chance = random.Next(1,3);
-            if (chance == 1 & enemy.skipTurn < 1) { enemy.skipTurn++; }
-            enemy.TakeDamage(player, 100);
+            if (player.UseMana(150))
+            {
+                int chance = random.Next(1, 3);
+                if (chance == 1 & enemy.skipTurn < 1) { enemy.skipTurn++; }
+                enemy.TakeDamage(player, 100);
+                return true;
+            }
+            return false;
+
         }
     }
 }

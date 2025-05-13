@@ -17,10 +17,14 @@ namespace HugeSwordW
         public override int AttackBonus { get; set; } = 18;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(250);
-            enemy.TakeDamageWithPercentDefence(player,100,1);
+            if (player.UseMana(250))
+            {
+                enemy.TakeDamageWithPercentDefence(player, 100, 1);
+                return true;
+            }
+            return false;
         }
     }
 }

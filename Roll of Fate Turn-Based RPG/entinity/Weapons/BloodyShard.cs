@@ -17,10 +17,11 @@ namespace BloodyShardW
         public override int AttackBonus { get; set; } = 20;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(100);
-            player.Heal(enemy.TakeDamage(player,100)/4);
+            if (player.UseMana(100)) { player.Heal(enemy.TakeDamage(player, 100) / 4); return true; }
+            return false;
+
         }
     }
 }

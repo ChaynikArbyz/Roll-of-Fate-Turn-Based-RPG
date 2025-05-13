@@ -52,5 +52,30 @@ namespace JsonService
                 return null;
             }
         }
+        public void MarkPlayerAsDead()
+        {
+            if (!File.Exists(_filePath))
+            {
+                return;
+            }
+
+            string json = File.ReadAllText(_filePath);
+
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                IncludeFields = true,
+                WriteIndented = true
+            };
+
+            Player player = JsonSerializer.Deserialize<Player>(json, options);
+
+            if (player != null)
+            {
+                player.GetType().GetField("died").SetValue(player, true);
+
+                string updatedJson = JsonSerializer.Serialize(player, options);
+                File.WriteAllText(_filePath, updatedJson);
+            }
+        }
     }
 }

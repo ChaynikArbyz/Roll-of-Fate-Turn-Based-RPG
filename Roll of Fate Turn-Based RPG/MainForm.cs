@@ -138,5 +138,10 @@ namespace Roll_of_Fate_Turn_Based_RPG
             player.UseManaPotion();
             ShowStats();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
+using System.Numerics;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ArmorClass;
 using EnemyClass;
+using JsonService;
+using Roll_of_Fate_Turn_Based_RPG;
+using Roll_of_Fate_Turn_Based_RPG.Properties;
 using WeaponClass;
 using WoodenStickW;
 
@@ -16,6 +21,7 @@ namespace PlayerClass
     public class Player
     {
         Random random = new Random();
+        SaveLoadService saveLoadService = new SaveLoadService();
 
         public string Name = "";
 
@@ -28,13 +34,17 @@ namespace PlayerClass
         public int Mana = 50;
         public int MaxMana = 50;
 
-        public int Strength = 0;
-        public int Endurance = 0;
-        public int Agility = 0;
-        public int Intelligence = 0;
+        public int Strength = 1;
+        public int Endurance = 1;
+        public int Agility = 1;
+        public int Intelligence = 1;
 
         public double CriticalChance = 0;
         public double AvoidChance = 0;
+
+        public bool isBlocking = false;
+
+        public bool died = false;
 
         public int Gold = 0;
 
@@ -48,8 +58,8 @@ namespace PlayerClass
         {
             this.Health = this.MaxHealth;
             this.Mana = this.MaxMana;
-            this.CriticalChance = this.Agility;
-            this.AvoidChance = this.Endurance;
+            CalculateCriticalChance();
+            CalculateAvoidChance();
         }
 
         public double CalculateCriticalChance()
@@ -62,14 +72,14 @@ namespace PlayerClass
             return this.AvoidChance;
         }
 
-        public void AddAgility(int toAdd) { Agility = Math.Max(0,Agility + toAdd); CalculateCriticalChance(); }
-        public void AddEndurance(int toAdd) { Endurance = Math.Max(0, Endurance + toAdd); CalculateAvoidChance(); }
-        public void AddStrength(int toAdd) { Strength = Math.Max(0, Strength + toAdd); MaxHealth = 100 + Strength * 25; }
-        public void AddIntelligence(int toAdd) { Intelligence = Math.Max(0, Intelligence + toAdd); MaxMana = 50 + Intelligence * 10; }
+        public void AddAgility(int toAdd) { Agility = Math.Max(1,Agility + toAdd); CalculateCriticalChance(); }
+        public void AddEndurance(int toAdd) { Endurance = Math.Max(1, Endurance + toAdd); CalculateAvoidChance(); }
+        public void AddStrength(int toAdd) { Strength = Math.Max(1, Strength + toAdd); MaxHealth = 100 + Strength * 25; }
+        public void AddIntelligence(int toAdd) { Intelligence = Math.Max(1, Intelligence + toAdd); MaxMana = 50 + Intelligence * 10; }
 
         public int CalculateAttackPower() { return this.Strength * 5 + Weapon.AttackBonus; }
 
-        public int CalculateDefense() { return this.Strength * 3 + Armor.DefenseBonus; }
+        public int CalculateDefense() { return this.Strength * 4 + Armor.DefenseBonus; }
 
 
 
@@ -140,7 +150,21 @@ namespace PlayerClass
         public void DecreaseHealth(int toDecrease)
         {
             if (Health - toDecrease <= 0)
-            { MessageBox.Show("Ви умерли!"); Application.Exit(); }
+            {
+                Health = 0;
+                saveLoadService.MarkPlayerAsDead();
+                SoundPlayer soundPlayer = new SoundPlayer();
+                Timer timer = new Timer();
+                soundPlayer.Stop();
+                timer.Interval = 3000;
+
+                timer.Tick += (s, e) => { timer.Stop(); timer.Dispose(); Application.Restart(); };
+
+                //soundPlayer.Stream = Resources.deadSound;
+               soundPlayer.SoundLocation = "../../Resources/deadSound.wav";
+                soundPlayer.Play();
+                timer.Start();
+            }
             else { Health -= toDecrease; }
         }
         public bool UseMana(int toDecrease)

@@ -50,9 +50,10 @@ namespace ItemsGeneratorNameSpace
         public Armor ArmorGenerator(Player player) 
         {
         Armor armor = new Armor();
-            int multy = random.Next(1, 4);
-            armor.Price = 0;//multy * player.Level * random.Next(20, 61);
-            armor.DefenseBonus = multy * player.Level * random.Next(2, 6);
+            int quality = random.Next(1, 5);
+            int StarterPrice = random.Next(1, 4);
+            armor.Price = StarterPrice * player.Level * random.Next(10, 61);
+            armor.DefenseBonus = quality * player.Level * random.Next(2, 6);
             armor.Name = ArmorNames[random.Next(0, ArmorNames.Count)];
 
             return armor;
@@ -61,9 +62,10 @@ namespace ItemsGeneratorNameSpace
         public Weapon WeaponGenerator(Player player)
         {
             Weapon weapon = weapons[random.Next(0, weapons.Count)];
-            int StarterPrice = random.Next(2, 5);
-            weapon.Price = 0;// StarterPrice * player.Level * random.Next(20, 61);
-            weapon.AttackBonus = StarterPrice * player.Level * random.Next(2, 6);
+            int quality = random.Next(1, 5);
+            int StarterPrice = random.Next(1, 4);
+            weapon.Price = StarterPrice * player.Level * random.Next(10, 61);
+            weapon.AttackBonus = quality * player.Level * random.Next(2, 6);
             return weapon;
         }
     }

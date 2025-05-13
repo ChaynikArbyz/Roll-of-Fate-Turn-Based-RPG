@@ -20,10 +20,15 @@ namespace WoodenStickW
         public override int AttackBonus { get; set; } = 3;
 
         
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(100);
-            player.Heal(1);
+            if (player.UseMana(100))
+            {
+                player.Heal(1);
+                return true;
+            }
+            return false;
+
         }
     }
 }

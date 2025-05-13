@@ -17,12 +17,17 @@ namespace ShadowDaggerW
         public override int AttackBonus { get; set; } = 7;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(100);
-            player.Heal(enemy.TakeDamage(player,100)/10);
-            enemy.TakeDamageWithPercentDefence(player,100,50);
-            enemy.TakeDamage(player,50);
+            if (player.UseMana(100))
+            {
+                player.Heal(enemy.TakeDamage(player, 100) / 10);
+                enemy.TakeDamageWithPercentDefence(player, 100, 50);
+                enemy.TakeDamage(player, 50);
+                return true;
+            }
+            return false;
+
         }
     }
 }

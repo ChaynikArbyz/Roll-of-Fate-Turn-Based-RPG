@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -15,10 +16,22 @@ namespace Roll_of_Fate_Turn_Based_RPG
 {
     public partial class Form1 : Form
     {
+        Player player;
+
+ 
+        
         SaveLoadService SLService = new SaveLoadService();
         public Form1()
         {
             InitializeComponent();
+        }
+
+
+        private void existsSave()
+        {
+            if (File.Exists("save.json"))
+            { player = SLService.Load(); }
+            else { loadButton.Enabled = false; }
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -31,7 +44,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void realCreateButton_Click(object sender, EventArgs e)
         {
-            Player player = new Player();
+            player = new Player();
             player.Name = nameBox.Text;
             MainForm form = new MainForm(player);
             this.Hide();
@@ -47,7 +60,13 @@ namespace Roll_of_Fate_Turn_Based_RPG
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            existsSave();
+            if (player.died)
+            {
+                player.died = false; 
+                MessageBox.Show("Вы вернулись во времени", "Re:Zero reference", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SLService.Save(player);
+            }
         }
     }
 }

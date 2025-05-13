@@ -17,10 +17,11 @@ namespace FlamingBladeW
         public override int AttackBonus { get; set; } = 15;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(100);
-            player.DecreaseHealth(enemy.TakeDamage(player, 130)/5);
+            if (player.UseMana(100)) { player.DecreaseHealth(enemy.TakeDamage(player, 130) / 5);return true; }
+            return false;
+
         }
     }
 }

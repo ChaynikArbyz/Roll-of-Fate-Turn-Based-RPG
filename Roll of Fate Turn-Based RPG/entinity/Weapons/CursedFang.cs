@@ -17,11 +17,16 @@ namespace CursedFangW
         public override int AttackBonus { get; set; } = 15;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(100);
-            enemy.TakeDamage(player, 100);
-            enemy.TakeDamage(player, 20);
+            if (player.UseMana(100))
+            {
+                enemy.TakeDamage(player, 100);
+                enemy.TakeDamage(player, 20);
+                return true;
+            }
+            return false;
+
         }
     }
 }

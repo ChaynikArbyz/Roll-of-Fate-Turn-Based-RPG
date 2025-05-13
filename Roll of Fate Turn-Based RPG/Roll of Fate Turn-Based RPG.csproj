@@ -179,5 +179,8 @@
   <ItemGroup>
     <None Include="Resources\Images\Buy %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sounds\deadSound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

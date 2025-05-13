@@ -17,11 +17,16 @@ namespace BloodthirstyScytheW
         public override int AttackBonus { get; set; } = 15;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(200);
-            if (enemy.Health <= enemy.MaxHealth / 10) { player.Heal(enemy.TakeDamage(player, 100)); }
-            else { enemy.TakeDamage(player, 100); }
+            if (player.UseMana(200))
+            {
+                if (enemy.Health <= enemy.MaxHealth / 10) { player.Heal(enemy.TakeDamage(player, 100)); }
+                else { enemy.TakeDamage(player, 100); }
+                return true;
+            }
+            return false;
+
         }
     }
 }

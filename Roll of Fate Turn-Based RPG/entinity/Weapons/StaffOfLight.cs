@@ -17,11 +17,16 @@ namespace StaffOfLightW
         public override int AttackBonus { get; set; } = 9;
 
 
-        public override void UseAbility(Player player, Enemy enemy)
+        public override bool UseAbility(Player player, Enemy enemy)
         {
-            player.UseMana(100);
-            enemy.TakeDamage(player, 100);
-            enemy.TakeDamageWithPercentDefence(player,100,80);
+            if (player.UseMana(100))
+            {
+                enemy.TakeDamage(player, 100);
+                enemy.TakeDamageWithPercentDefence(player, 100, 80);
+                return true;
+            }
+            return false;
+
         }
     }
 }

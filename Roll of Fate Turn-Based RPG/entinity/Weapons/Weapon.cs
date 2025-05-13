@@ -42,6 +42,6 @@ namespace WeaponClass
         public abstract int Price { get; set; }
         public abstract int AttackBonus { get; set; }
 
-        public abstract void UseAbility(Player player, Enemy enemy);
+        public abstract bool UseAbility(Player player, Enemy enemy);
     }
 }
