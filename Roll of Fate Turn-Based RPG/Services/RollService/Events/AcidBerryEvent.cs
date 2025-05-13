@@ -15,7 +15,7 @@ namespace AcidBerryE
         MessageService messageService = new MessageService();
         public override void ApplyEvent(Player player)
         {
-            player.TakeDamage(player.MaxHealth/10);
+            player.DecreaseHealth(player.MaxHealth/10);
             messageService.BadMessage($"Вы находите куст с ягодами и решаете попробовать парочку\nЯгоды оказались ядовитыми!\n-10% здоровья");
         }
     }

@@ -1,44 +1,56 @@
 ﻿using System;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using PlayerClass;
-using System.Text.Json;
 using System.IO;
+using System.Windows.Forms;
 
-namespace JsonServise
+namespace JsonService
 {
     public class SaveLoadService
     {
+        private readonly string _filePath = "save.json";
+
         public void Save(Player player)
         {
             JsonSerializerOptions options = new JsonSerializerOptions
             {
                 IncludeFields = true,
-                WriteIndented = true,
+                WriteIndented = true
             };
 
-            string text = JsonSerializer.Serialize(player, options);
-
-            File.WriteAllText("save.json", text);
+            string json = JsonSerializer.Serialize(player, options);
+            File.WriteAllText(_filePath, json);
         }
 
         public Player Load()
         {
-            Player player = null;
+            if (!File.Exists(_filePath))
+            {
+                MessageBox.Show("Сохранения не найдено!","Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+
+            string json = File.ReadAllText(_filePath);
 
             JsonSerializerOptions options = new JsonSerializerOptions
             {
                 IncludeFields = true,
-                WriteIndented = true,
+                WriteIndented = true
             };
 
-            string text = File.ReadAllText("save.json");
-
-            player = JsonSerializer.Deserialize<Player>(text, options);
-
-            return player;
+            try
+            {
+                Player player = JsonSerializer.Deserialize<Player>(json, options);
+                return player;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки файла: {ex.Message}","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
 }

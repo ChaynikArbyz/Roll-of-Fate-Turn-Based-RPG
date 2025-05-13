@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JsonServise;
+using JsonService;
 using PlayerClass;
 using Roll_of_Fate_Turn_Based_RPG.Properties;
 using RollServ;
@@ -34,8 +34,8 @@ namespace Roll_of_Fate_Turn_Based_RPG
         {
             nameLabel.Text = $"- {player.Name} -";
 
-            WeaponLabel.Text = $"Оружие: {player.Weapon.Name}\nБонус к урону: {player.Weapon.GetAttackBonus()}\nСпособность: {player.Weapon.AbilityDescription}";
-            ArmorLabel.Text = $"Броня: {player.Armor.Name}\nБонус к защите: {player.Armor.GetDefenseBonus()}";
+            WeaponLabel.Text = $"Оружие: {player.Weapon.Name}\nБонус к урону: {player.Weapon.AttackBonus}\nСпособность: {player.Weapon.AbilityDescription}";
+            ArmorLabel.Text = $"Броня: {player.Armor.Name}\nБонус к защите: {player.Armor.DefenseBonus}";
 
             LvlCountLabel.Text = $"Уровень: {player.Level}";
             expCountLabel.Text = $"{player.Experience}/{player.LevelCup}";

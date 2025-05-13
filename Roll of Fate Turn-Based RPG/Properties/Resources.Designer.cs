@@ -63,6 +63,16 @@ namespace Roll_of_Fate_Turn_Based_RPG.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Buy {
+            get {
+                object obj = ResourceManager.GetObject("Buy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dice {
             get {
                 object obj = ResourceManager.GetObject("Dice", resourceCulture);

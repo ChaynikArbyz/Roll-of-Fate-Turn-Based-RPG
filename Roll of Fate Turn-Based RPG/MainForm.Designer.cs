@@ -268,10 +268,10 @@
             this.WeaponLabel.Location = new System.Drawing.Point(31, 50);
             this.WeaponLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WeaponLabel.Name = "WeaponLabel";
-            this.WeaponLabel.Size = new System.Drawing.Size(300, 101);
+            this.WeaponLabel.Size = new System.Drawing.Size(319, 101);
             this.WeaponLabel.TabIndex = 17;
-            this.WeaponLabel.Text = "Оружие: Ножи Вампира\r\nБонус к урону: 1\r\nСпособность: Востанавливает 25% здоровья " +
-    "от урона вашей следующей атаки";
+            this.WeaponLabel.Text = "Оружие: Ножи Вампира\r\nБонус к урону: 1\r\nСпособность: Атака с исцелением здоровья " +
+    "от 10% урона атаки + Атака игнорирующая 50% защиты врага + Атака с 50% урона";
             // 
             // ArmorLabel
             // 
@@ -437,7 +437,6 @@
         private System.Windows.Forms.Label ArmorLabel;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button RollButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label SucessLabel;
         private System.Windows.Forms.Button HealPotionsLabel;
         private System.Windows.Forms.Button ManaPotionsLabel;

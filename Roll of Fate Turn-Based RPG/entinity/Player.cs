@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ArmorClass;
 using EnemyClass;
 using WeaponClass;
+using WoodenStickW;
 
 namespace PlayerClass
 {
@@ -37,7 +38,7 @@ namespace PlayerClass
 
         public int Gold = 0;
 
-        public Weapon Weapon = new Weapon();
+        public Weapon Weapon = new WoodenStick();
         public Armor Armor = new Armor();
 
         public int HealPotion = 0;
@@ -66,9 +67,9 @@ namespace PlayerClass
         public void AddStrength(int toAdd) { Strength = Math.Max(0, Strength + toAdd); MaxHealth = 100 + Strength * 25; }
         public void AddIntelligence(int toAdd) { Intelligence = Math.Max(0, Intelligence + toAdd); MaxMana = 50 + Intelligence * 10; }
 
-        public int CalculateAttackPower() { return this.Strength * 5 + Weapon.GetAttackBonus(); }
+        public int CalculateAttackPower() { return this.Strength * 5 + Weapon.AttackBonus; }
 
-        public int CalculateDefense() { return this.Strength * 3 + Armor.GetDefenseBonus(); }
+        public int CalculateDefense() { return this.Strength * 3 + Armor.DefenseBonus; }
 
 
 
@@ -87,9 +88,7 @@ namespace PlayerClass
             if (random.NextDouble() <= CalculateAvoidChance() / 100) { MessageBox.Show("Ви увернулись от атаки"); }
             else
             {
-                damage = Math.Max(0, damage - CalculateDefense());
-                if (Health - damage > 0) { Health -= damage; }
-                else { Health = 0; MessageBox.Show("Ви умерли!", "Lose", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                DecreaseHealth(damage);
             }
         }
 
@@ -144,6 +143,12 @@ namespace PlayerClass
             { MessageBox.Show("Ви умерли!"); Application.Exit(); }
             else { Health -= toDecrease; }
         }
+        public bool UseMana(int toDecrease)
+        {
+            if (Mana - toDecrease < 0) {MessageBox.Show($"Недостаточно маны!\n требуеться {toDecrease} маны", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error); return false; }
+            else {Mana -= toDecrease; return true; }
+        }
+
         public void Heal(int toHeal) => Health = Math.Min(MaxHealth, Health + toHeal);
         public void HealMana(int toHeal) => Mana = Math.Min(MaxMana, Mana + toHeal);
 
@@ -152,8 +157,8 @@ namespace PlayerClass
             if (HealPotion > 0)
             {
                 HealPotion--;
-                Heal(MaxHealth / 2);
-                MessageBox.Show("Зелье использовано\n+50% здоровья", "Sucess", MessageBoxButtons.OK);
+                Heal(MaxHealth / 4);
+                MessageBox.Show("Зелье использовано\n+25% здоровья", "Sucess", MessageBoxButtons.OK);
             }
             else { MessageBox.Show("Недостаточно Зелий!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
         }
@@ -162,8 +167,8 @@ namespace PlayerClass
             if (ManaPotion > 0)
             {
                 ManaPotion--;
-                HealMana(MaxMana / 2);
-                MessageBox.Show("Зелье использовано\n+50% маны", "Sucess", MessageBoxButtons.OK);
+                HealMana(MaxMana / 4);
+                MessageBox.Show("Зелье использовано\n+25% маны", "Sucess", MessageBoxButtons.OK);
             }
             else { MessageBox.Show("Недостаточно Зелий!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

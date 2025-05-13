@@ -53,7 +53,7 @@ namespace RollServ
                 case 8:
                 case 7:
                 case 6:
-                    FightRolled(player);
+                    FightRolled(player, mainForm);
                     break;
                 default:
                     EventRolled(player);
@@ -73,8 +73,12 @@ namespace RollServ
                 form.Show();
             }
         }
-        private void FightRolled(Player player)
-        { }
+        private void FightRolled(Player player, MainForm mainForm)
+        {
+            Fight form = new Fight(player);
+            mainForm.Hide();
+            form.Show();
+        }
         private void EventRolled(Player player) => events[random.Next(0, events.Count)].ApplyEvent(player);
 
     }

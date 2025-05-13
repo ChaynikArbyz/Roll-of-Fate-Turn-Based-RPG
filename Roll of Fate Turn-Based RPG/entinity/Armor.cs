@@ -8,12 +8,8 @@ namespace ArmorClass
 {
     public class Armor
     {
-        public string Name = "";
-        int Price = 0;
-        int DefenseBonus = 0;
-
-        public int GetDefenseBonus()
-        { return this.DefenseBonus; }
-
+        public string Name = "Картонная Коробка";
+        public int Price = 0;
+        public int DefenseBonus = 1;
     }
 }

@@ -21,7 +21,7 @@ namespace GoldFoundE
             {
                 toAdd = player.Gold / random.Next(1,11);
             }
-            else { toAdd = random.Next(1,51); }
+            else { toAdd = random.Next(1,76); }
 
             player.IncreaseMoney(toAdd);
             messageService.GoodMessage($"Вы нашли кем-то потерянное золото\n+{toAdd} золота");

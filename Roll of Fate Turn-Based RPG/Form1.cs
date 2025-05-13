@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JsonServise;
+using JsonService;
 using PlayerClass;
 
 namespace Roll_of_Fate_Turn_Based_RPG

@@ -80,7 +80,25 @@
     <Compile Include="entinity\Armor.cs" />
     <Compile Include="entinity\Enemy.cs" />
     <Compile Include="entinity\Player.cs" />
-    <Compile Include="entinity\Weapon.cs" />
+    <Compile Include="entinity\Weapons\HugeSword.cs" />
+    <Compile Include="entinity\Weapons\IceBlade.cs" />
+    <Compile Include="entinity\Weapons\FlamingBlade.cs" />
+    <Compile Include="entinity\Weapons\BloodthirstyScythe.cs" />
+    <Compile Include="entinity\Weapons\ThunderRift.cs" />
+    <Compile Include="entinity\Weapons\CryOfGhosts.cs" />
+    <Compile Include="entinity\Weapons\ShadowDagger.cs" />
+    <Compile Include="entinity\Weapons\BloodyShard.cs" />
+    <Compile Include="entinity\Weapons\StaffOfLight.cs" />
+    <Compile Include="entinity\Weapons\CursedFang.cs" />
+    <Compile Include="entinity\Weapons\WoodenStick.cs" />
+    <Compile Include="entinity\Weapons\Weapon.cs" />
+    <Compile Include="Fight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fight.Designer.cs">
+      <DependentUpon>Fight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ItemsGeneratorService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\RollService\Events\BaseEvent.cs" />
     <Compile Include="Services\RollService\Events\GoldFoundEvent.cs" />
@@ -116,6 +134,9 @@
     <Compile Include="Shop.Designer.cs">
       <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Fight.resx">
+      <DependentUpon>Fight.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Images\RollingDice.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Buy %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
