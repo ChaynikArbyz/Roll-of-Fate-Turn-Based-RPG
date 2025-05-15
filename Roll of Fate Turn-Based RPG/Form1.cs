@@ -17,7 +17,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
 {
     public partial class Form1 : Form
     {
-        Player player;
+        Player player = new Player();
 
  
         
