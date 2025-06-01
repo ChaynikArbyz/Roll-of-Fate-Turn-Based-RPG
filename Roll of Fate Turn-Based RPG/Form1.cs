@@ -66,7 +66,7 @@ namespace Roll_of_Fate_Turn_Based_RPG
             if (player.died)
             {
                 player.died = false; 
-                MessageBox.Show("Вы вернулись во времени", "Re:Zero reference", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Вы вернулись во времени", "Return by death", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SLService.Save(player);
             }
         }
